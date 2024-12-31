@@ -4,16 +4,16 @@ import AddressForm from './components/AddressForm';
 import AddressManagement from './components/AddressManagement';
 import './App.css';
 
-const App = () => {
+  const App = () => {
   const [mapCenter, setMapCenter] = useState({ lat: 37.7749, lng: -122.4194 });
   const [markerPosition, setMarkerPosition] = useState(mapCenter);
   const [selectedAddress, setSelectedAddress] = useState('');
   const [savedAddresses, setSavedAddresses] = useState([]);
-  const [formVisible, setFormVisible] = useState(false);
+  const [formVisible, setFormVisible] = useState(true);
   const [error, setError] = useState(null);
   const mapRef = useRef(null); 
 
-  useEffect(() => {
+    useEffect(() => {
     const fetchAddresses = async () => {
       try {
         const response = await fetch('http://localhost:30001/api/addresses');
@@ -25,7 +25,7 @@ const App = () => {
       }
     };
     fetchAddresses();
-  }, []);
+    }, []);
 
     
   
@@ -46,10 +46,10 @@ const App = () => {
       } else {
         setSelectedAddress('No address found for this location.');
       }
-    } catch {
+      } catch {
       setError('Failed to fetch the address.');
-    }
-  };
+     }
+    };
 
   const handleSaveAddress = (newAddress) => {
 
@@ -157,5 +157,7 @@ const App = () => {
 };
 
 export default App;
+
+
 
 
